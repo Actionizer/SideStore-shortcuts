@@ -13,7 +13,7 @@ import SideSign
 
 final class UserCustomizationOperation: BasePipelineOperation<InstallAppOperationContext, String?>, @unchecked Sendable {
 
-    override func execute(parentProgress: Progress?) async throws -> String? {
+    override func execute(parentProgress: Progressss?) async throws -> String? {
         let startTime = CFAbsoluteTimeGetCurrent()
         debugLog("[UserCustomizationOperation] execute() started")
         defer {

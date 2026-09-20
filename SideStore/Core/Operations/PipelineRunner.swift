@@ -12,8 +12,8 @@ import SideSign
 
 
 protocol PipelineProgress: Sendable{
-    func progress(for operation: AppOperation) -> Progress?
-    func set(_ progress: Progress?, for operation: AppOperation)
+    func progress(for operation: AppOperation) -> Progressss?
+    func set(_ progress: Progressss?, for operation: AppOperation)
 }
 protocol PipelineExecutionContext: AnyObject, Sendable {
     var isActivelyManagingAnyApp: Bool { get }
@@ -160,7 +160,7 @@ final class PipelineRunner: Sendable
         
         for operation in operations
         {
-            let progress = Progress.discreteProgress(totalUnitCount: 100)
+            let progress = Progressss.discreteProgress(totalUnitCount: 100)
             self.progress.set(progress, for: operation)
             group.progress.addChild(progress, withPendingUnitCount: 100)
         }

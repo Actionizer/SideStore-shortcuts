@@ -38,7 +38,7 @@ final class DownloadAppOperation: BasePipelineOperation<InstallAppOperationConte
         try super.init(context: context)
     }
 
-    override func execute(parentProgress: Progress?) async throws -> ALTApplication {
+    override func execute(parentProgress: Progressss?) async throws -> ALTApplication {
         let startTime = CFAbsoluteTimeGetCurrent()
         debugLog("[DownloadAppOperation] execute() started")
         defer {
@@ -321,7 +321,7 @@ extension DownloadAppOperation {
 }
 
 private final class DownloadProgressDelegate: NSObject, URLSessionDownloadDelegate, @unchecked Sendable {
-    let progress: Progress
+    let progress: Progressss
     weak var task: URLSessionDownloadTask?
     private var lastLoggedPercent: Int = -1
     private var lastLogTime: CFAbsoluteTime = 0
@@ -329,7 +329,7 @@ private final class DownloadProgressDelegate: NSObject, URLSessionDownloadDelega
     private var hasResumed = false
     private let lock = NSLock()
     
-    init(progress: Progress, completion: @escaping (Result<URL, Error>) -> Void) {
+    init(progress: Progressss, completion: @escaping (Result<URL, Error>) -> Void) {
         self.progress = progress
         self.continuation = completion
         super.init()

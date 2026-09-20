@@ -12,7 +12,7 @@ import CoreData
 
 class FetchProvisioningProfilesOperation: BasePipelineOperation<InstallAppOperationContext, [String: ALTProvisioningProfile]>, @unchecked Sendable {
     
-    override func execute(parentProgress: Progress?) async throws -> [String: ALTProvisioningProfile] {
+    override func execute(parentProgress: Progressss?) async throws -> [String: ALTProvisioningProfile] {
         let startTime = CFAbsoluteTimeGetCurrent()
         debugLog("[FetchProvisioningProfilesOperation] execute() started")
         defer {

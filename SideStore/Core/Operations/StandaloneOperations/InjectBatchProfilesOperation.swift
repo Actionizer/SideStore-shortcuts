@@ -24,7 +24,7 @@ final class InjectBatchProfilesOperation: BaseStandaloneOperation<StandaloneOper
         try super.init(context: context)
     }
 
-    override func execute(parentProgress: Progress?) async throws {
+    override func execute(parentProgress: Progressss?) async throws {
         let startTime = CFAbsoluteTimeGetCurrent()
         debugLog("[InjectBatchProfilesOperation] execute() started")
         defer {

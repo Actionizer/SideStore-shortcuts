@@ -32,12 +32,13 @@ class IntentError: NSError, CustomLocalizedStringResourceConvertible, @unchecked
     }
 }
 
-@available(iOS 17.0, tvOS 17.0, *)
-struct InstallIPAIntent: AppIntent, ProgressReportingIntent
+@available(iOS 16.6, tvOS 16.6, *)
+struct InstallIPAIntent: AppIntent//, ProgressReportingIntent
 {
     static var title: LocalizedStringResource = "Install IPA"
     static var description = IntentDescription("Installs an IPA file with SideStore.")
     static var openAppWhenRun = false
+    var progress = Progressss()
 
     @Parameter(title: "IPA File")
     var ipaFile: IntentFile
@@ -85,7 +86,7 @@ struct InstallIPAIntent: AppIntent, ProgressReportingIntent
 }
 
 
-@available(iOS 17.0, tvOS 17.0, *)
+@available(iOS 16.6, tvOS 16.6, *)
 extension RefreshAllAppsIntent
 {
     private actor OperationActor
@@ -99,13 +100,14 @@ extension RefreshAllAppsIntent
     }
 }
 
-@available(iOS 17.0, tvOS 17.0, *)
-struct RefreshAllAppsIntent: AppIntent, CustomIntentMigratedAppIntent, PredictableIntent, ProgressReportingIntent, ForegroundContinuableIntent
+@available(iOS 16.6, tvOS 16.6, *)
+struct RefreshAllAppsIntent: AppIntent, CustomIntentMigratedAppIntent, PredictableIntent, ForegroundContinuableIntent
 {
     static let intentClassName = "RefreshAllIntent"
     
     static var title: LocalizedStringResource = "Refresh All Apps"
     static var description = IntentDescription("Refreshes your sideloaded apps to prevent them from expiring.")
+    var progress: Progressss = Progressss(totalUnitCount: 0)
     
     static var parameterSummary: some ParameterSummary {
         Summary("Refresh All Apps")
@@ -184,7 +186,7 @@ struct RefreshAllAppsIntent: AppIntent, CustomIntentMigratedAppIntent, Predictab
     }
 }
 
-@available(iOS 17.0, tvOS 17.0, *)
+@available(iOS 16.6, tvOS 16.6, *)
 private extension RefreshAllAppsIntent
 {
     func refreshAllApps() async throws

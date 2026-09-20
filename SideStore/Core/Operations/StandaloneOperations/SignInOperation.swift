@@ -67,7 +67,7 @@ final class SignInOperation: BaseStandaloneOperation<StandaloneOperationContext,
     }
     
     // Main Pipeline Execution
-    override func execute(parentProgress: Progress?) async throws -> SignInResult {
+    override func execute(parentProgress: Progressss?) async throws -> SignInResult {
         let startTime = CFAbsoluteTimeGetCurrent()
         debugLog("[SignInOperation] execute() started")
         defer {

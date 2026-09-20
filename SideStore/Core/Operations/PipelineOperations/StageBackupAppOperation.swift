@@ -17,7 +17,7 @@ final class StageBackupAppOperation: BasePipelineOperation<InstallAppOperationCo
         try super.init(context: context)
     }
 
-    override func execute(parentProgress: Progress?) async throws -> InstalledApp {
+    override func execute(parentProgress: Progressss?) async throws -> InstalledApp {
         let startTime = CFAbsoluteTimeGetCurrent()
         debugLog("[StageBackupAppOperation] execute() started")
         defer {

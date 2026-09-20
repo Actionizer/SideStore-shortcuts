@@ -19,7 +19,7 @@ final class DeactivateAppOperation: BasePipelineOperation<PipelineOperationConte
         try super.init(context: context)
     }
     
-    override func execute(parentProgress: Progress?) async throws -> InstalledApp {
+    override func execute(parentProgress: Progressss?) async throws -> InstalledApp {
         let startTime = CFAbsoluteTimeGetCurrent()
         debugLog("[DeactivateAppOperation] execute() started")
         defer {

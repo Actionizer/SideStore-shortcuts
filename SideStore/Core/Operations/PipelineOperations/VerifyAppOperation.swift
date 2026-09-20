@@ -33,7 +33,7 @@ final class VerifyAppOperation: BasePipelineOperation<InstallAppOperationContext
         try super.init(context: context)
     }
     
-    override func execute(parentProgress: Progress?) async throws -> Bool {
+    override func execute(parentProgress: Progressss?) async throws -> Bool {
         let startTime = CFAbsoluteTimeGetCurrent()
         debugLog("[VerifyAppOperation] execute() started")
         defer {

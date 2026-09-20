@@ -30,7 +30,7 @@ protocol WeightedOperationContext: AnyObject {
     func weightForFirstOccurrence(of step: some OperationStep) -> Int64?
     func weight(for step: some OperationStep, occurrenceNumber: Int) -> Int64?
     func consumeWeight(for step: some OperationStep) throws -> Int64
-    func attachProgressSlot(for step: some OperationStep, childProgress: Progress, parentProgress: Progress) throws -> Bool
+    func attachProgressSlot(for step: some OperationStep, childProgress: Progressss, parentProgress: Progressss) throws -> Bool
 }
 
 class OperationContext: WeightedOperationContext
@@ -42,7 +42,7 @@ class OperationContext: WeightedOperationContext
     private var stepItems: [OperationStepItem]
     private var currentIndex = 0
     private var remainingReuses: [Int: Int] = [:]
-    private var stepProgressSlots: [Int: Progress] = [:]
+    private var stepProgressSlots: [Int: Progressss] = [:]
 
     fileprivate init(stepItems: [OperationStepItem] = [], error: Error? = nil, dbBackgroundContext: NSManagedObjectContext)
     {
@@ -126,16 +126,16 @@ class OperationContext: WeightedOperationContext
         }
     }
 
-    func attachProgressSlot(for step: some OperationStep, childProgress: Progress, parentProgress: Progress) throws -> Bool {
+    func attachProgressSlot(for step: some OperationStep, childProgress: Progressss, parentProgress: Progressss) throws -> Bool {
         guard let index = findIndex(for: step) else { return false }
         let item = stepItems[index]
         guard item.resetProgress else { return false }
         
-        let slot: Progress
+        let slot: Progressss
         if let existing = stepProgressSlots[index] {
             slot = existing
         } else {
-            slot = Progress.discreteProgress(totalUnitCount: childProgress.totalUnitCount)
+            slot = Progressss.discreteProgress(totalUnitCount: childProgress.totalUnitCount)
             parentProgress.addChild(slot, withPendingUnitCount: item.weight)
             stepProgressSlots[index] = slot
         }

@@ -22,7 +22,7 @@ final class InstallAppOperation: BasePipelineOperation<InstallAppOperationContex
         self.progress.totalUnitCount = 100
     }
     
-    override func execute(parentProgress: Progress?) async throws -> InstalledApp {
+    override func execute(parentProgress: Progressss?) async throws -> InstalledApp {
         let startTime = CFAbsoluteTimeGetCurrent()
         debugLog("[InstallAppOperation] execute() started")
         defer {

@@ -1,12 +1,12 @@
 // Your Team ID. 
 // If you have a paid Apple Developer account, you can find your Team ID at 
 // https://developer.apple.com/account/#/membership
-DEVELOPMENT_TEAM = XYZ0123456
+DEVELOPMENT_TEAM = ZW5JC2H6AQ
 
 // If you have a free account use this following line
 // CODE_SIGN_ENTITLEMENTS = ./AltStore/AltStoreFree.entitlements
 // Paid accounts can use this following line
-CODE_SIGN_ENTITLEMENTS = ./AltStore/AltStore.entitlements
+CODE_SIGN_ENTITLEMENTS = ./AltStore/AltStoreFree.entitlements
 
 // Set this for dev-local xcode builds
 //MARKETING_VERSION_SUFFIX = -local
@@ -29,11 +29,11 @@ DEVELOPER_ACCOUNT_PAID = NO
 
 // Name of the iOS development signing certificate, you probably do not need
 // to change this.
-CODE_SIGN_IDENTITY_IOS = Apple Development
+CODE_SIGN_IDENTITY_IOS = iPhone Developer
 
 // Name of the iOS development signing certificate, you probably do not need
 // to change this.
-CODE_SIGN_IDENTITY_TVOS = Apple Development
+CODE_SIGN_IDENTITY_TVOS = iPhone Developer
 
 // The values below are specific to macOS development. If you do not define
 // these keys, the build will default to ad-hoc signing. You will need to
@@ -42,7 +42,7 @@ CODE_SIGN_IDENTITY_TVOS = Apple Development
 
 // Name of the macOS development signing certificate. Comment out this line to
 // use ad-hoc signing.
-CODE_SIGN_IDENTITY_MAC = Apple Development
+// CODE_SIGN_IDENTITY_MAC = Apple Development
 
 // Create a Mac provisioning profile for com.myuniquename.UTM with the
 // Hypervisor entitlements and get its UUID. If you do not have access to these

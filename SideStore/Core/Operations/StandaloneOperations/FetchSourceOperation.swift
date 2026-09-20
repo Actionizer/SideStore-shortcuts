@@ -47,7 +47,7 @@ final class FetchSourceOperation: BaseStandaloneOperation<StandaloneOperationCon
         self.dataTask?.cancel()
     }
     
-    override func execute(parentProgress: Progress?) async throws -> Source {
+    override func execute(parentProgress: Progressss?) async throws -> Source {
         let startTime = CFAbsoluteTimeGetCurrent()
         debugLog("[FetchSourceOperation] execute() started")
         defer {

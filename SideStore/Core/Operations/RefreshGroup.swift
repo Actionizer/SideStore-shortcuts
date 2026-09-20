@@ -14,7 +14,7 @@ final class RefreshGroup: NSObject
 {
     let dbContext: NSManagedObjectContext
     let sharedContext: SharedPipelineContext
-    let progress = Progress.discreteProgress(totalUnitCount: 100)
+    let progress = Progressss.discreteProgress(totalUnitCount: 100)
     var error: Error?
     var isCellularRefreshGroup: Bool = false
     let operationStartTime: CFAbsoluteTime = CFAbsoluteTimeGetCurrent()

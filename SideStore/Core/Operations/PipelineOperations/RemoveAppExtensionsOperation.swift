@@ -54,7 +54,7 @@ final class RemoveAppExtensionsOperation: BasePipelineOperation<InstallAppOperat
         try super.init(context: context)
     }
     
-    override func execute(parentProgress: Progress?) async throws -> ALTApplication {
+    override func execute(parentProgress: Progressss?) async throws -> ALTApplication {
         let startTime = CFAbsoluteTimeGetCurrent()
         debugLog("[RemoveAppExtensionsOperation] execute() started")
         defer {

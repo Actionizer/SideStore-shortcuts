@@ -12,7 +12,7 @@ import SideSign
 
 final class SyncAppIDsOperation: BaseStandaloneOperation<StandaloneOperationContext, Void>, @unchecked Sendable {
     
-    override func execute(parentProgress: Progress?) async throws -> Void {
+    override func execute(parentProgress: Progressss?) async throws -> Void {
         let startTime = CFAbsoluteTimeGetCurrent()
         debugLog("[SyncAppIDsOperation] execute() started")
         defer {

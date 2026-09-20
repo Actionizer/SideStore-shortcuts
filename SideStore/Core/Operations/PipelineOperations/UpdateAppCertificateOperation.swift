@@ -13,7 +13,7 @@ import SideSign
 
 final class UpdateAppCertificateOperation: BasePipelineOperation<InstallAppOperationContext, Void>, @unchecked Sendable {
     
-    override func execute(parentProgress: Progress?) async throws {
+    override func execute(parentProgress: Progressss?) async throws {
         let startTime = CFAbsoluteTimeGetCurrent()
         debugLog("[UpdateAppCertificateOperation] execute() started")
         defer {

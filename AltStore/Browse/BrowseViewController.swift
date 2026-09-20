@@ -555,7 +555,7 @@ private extension BrowseViewController
         }
     }
     
-    func install(_ app: StoreApp, at indexPath: IndexPath, progressUpdateHandler: @escaping (Progress) -> Void)
+    func install(_ app: StoreApp, at indexPath: IndexPath, progressUpdateHandler: @escaping (Progressss) -> Void)
     {
         InstallAppDialog.present(storeApp: app, from: self) { [weak self] in
             guard let self else { return }

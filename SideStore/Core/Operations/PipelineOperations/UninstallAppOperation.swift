@@ -11,7 +11,7 @@ import CoreData
 
 final class UninstallAppOperation: BasePipelineOperation<InstallAppOperationContext, InstalledApp>, @unchecked Sendable {
     
-    override func execute(parentProgress: Progress?) async throws -> InstalledApp {
+    override func execute(parentProgress: Progressss?) async throws -> InstalledApp {
         let startTime = CFAbsoluteTimeGetCurrent()
         debugLog("[UninstallAppOperation] execute() started")
         defer {

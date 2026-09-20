@@ -10,7 +10,7 @@ import Foundation
 
 final class CacheAppOperation: BasePipelineOperation<InstallAppOperationContext, URL?>, @unchecked Sendable {
 
-    override func execute(parentProgress: Progress?) async throws -> URL? {
+    override func execute(parentProgress: Progressss?) async throws -> URL? {
         let startTime = CFAbsoluteTimeGetCurrent()
         debugLog("[CacheAppOperation] execute() started")
         defer {

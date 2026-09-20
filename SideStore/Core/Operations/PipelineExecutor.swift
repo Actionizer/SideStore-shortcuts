@@ -26,7 +26,7 @@ final class PipelineExecutor: @unchecked Sendable {
         group: RefreshGroup,
         downloadingApp: AppProtocol,
         permissionsMode: PermissionReviewMode,
-        operationProgress: Progress?
+        operationProgress: Progressss?
     ) async throws -> InstalledApp {
         var finalApp: InstalledApp?
         
@@ -57,7 +57,7 @@ final class PipelineExecutor: @unchecked Sendable {
         group: RefreshGroup,
         downloadingApp: AppProtocol,
         permissionsMode: PermissionReviewMode,
-        progress: Progress?
+        progress: Progressss?
     ) async throws -> InstalledApp? {
         var result: Any? = "()"
         var loggerType: any OperationLogging.Type

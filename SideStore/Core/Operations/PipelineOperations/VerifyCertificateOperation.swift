@@ -19,7 +19,7 @@ final class VerifyCertificateOperation: BasePipelineOperation<InstallAppOperatio
         try super.init(context: context)
     }
     
-    override func execute(parentProgress: Progress?) async throws {
+    override func execute(parentProgress: Progressss?) async throws {
         let startTime = CFAbsoluteTimeGetCurrent()
         debugLog("[VerifyCertificateOperation] execute() started (willResign: \(self.willResign))")
         defer {

@@ -27,7 +27,7 @@ final class PerformBackupRestoreOperation: BasePipelineOperation<InstallAppOpera
         try super.init(context: context)
     }
     
-    override func execute(parentProgress: Progress?) async throws -> URL {
+    override func execute(parentProgress: Progressss?) async throws -> URL {
         let startTime = CFAbsoluteTimeGetCurrent()
         self.debugLog("[BackupRestoreAppOperation] execute() started. Action: \(action.rawValue)")
         defer {

@@ -13,7 +13,7 @@ final class RemoveBackupDataOperation: BasePipelineOperation<InstallAppOperation
     private let coordinator = NSFileCoordinator()
     private let coordinatorQueue = OperationQueue()
     
-    override func execute(parentProgress: Progress?) async throws -> Bool {
+    override func execute(parentProgress: Progressss?) async throws -> Bool {
         let startTime = CFAbsoluteTimeGetCurrent()
         debugLog("[RemoveBackupDataOperation] execute() started")
         defer {

@@ -46,7 +46,7 @@ final class BackgroundRefreshAppsOperation: BaseStandaloneOperation<OperationCon
         try super.init(context: context)
     }
     
-    override func execute(parentProgress: Progress?) async throws -> [String: Result<InstalledApp, Error>] {
+    override func execute(parentProgress: Progressss?) async throws -> [String: Result<InstalledApp, Error>] {
         let startTime = CFAbsoluteTimeGetCurrent()
         debugLog("[BackgroundRefreshAppsOperation] execute() started")
         defer {

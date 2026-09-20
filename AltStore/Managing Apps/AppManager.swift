@@ -43,8 +43,8 @@ final class AppManager: ObservableObject, @unchecked Sendable
     @Published
     private(set) var updateSourcesResult: Result<Void, Error>? // nil == loading
     
-    @Published private var installationProgress = [String: Progress]()
-    @Published private var refreshProgress = [String: Progress]()
+    @Published private var installationProgress = [String: Progressss]()
+    @Published private var refreshProgress = [String: Progressss]()
     private var cancellables: Set<AnyCancellable> = []
     
     private let progressLock = NSLock()
@@ -524,16 +524,16 @@ final class AppManager: ObservableObject, @unchecked Sendable
     func update(_ installedApp: InstalledApp,
                 to version: AppVersion? = nil,
                 presentingViewController: UIViewController?,
-                completionHandler: @escaping (Result<InstalledApp, Error>) -> Void) -> Progress
+                completionHandler: @escaping (Result<InstalledApp, Error>) -> Void) -> Progressss
     {
         debugLog("[AppManager] update() called for app: \(installedApp.bundleIdentifier)")
         guard let appVersion = version ?? installedApp.storeApp?.latestSupportedVersion else {
             completionHandler(.failure(OperationError.missingUpdate(appName: installedApp.name)))
-            return Progress.discreteProgress(totalUnitCount: 1)
+            return Progressss.discreteProgress(totalUnitCount: 1)
         }
         guard appVersion as AnyObject !== installedApp else {
             completionHandler(.failure(OperationError.invalidParameters("Make sure we never accidentally 'update' to already installed app.")))
-            return Progress.discreteProgress(totalUnitCount: 1)
+            return Progressss.discreteProgress(totalUnitCount: 1)
         }
         let pipelineHandler = self.makePipelineHandler(presentingViewController: presentingViewController)
         let dbContext = self.getValidDbContext()
@@ -745,14 +745,14 @@ extension AppManager: PipelineProgress, PipelineExecutionContext, PipelineErrorL
 
     
 
-    func installationProgress(for app: AppProtocol) -> Progress?
+    func installationProgress(for app: AppProtocol) -> Progressss?
     {
         return self.progressLock.withLock {
             self.installationProgress[app.bundleIdentifier]
         }
     }
     
-    func refreshProgress(for app: AppProtocol) -> Progress?
+    func refreshProgress(for app: AppProtocol) -> Progressss?
     {
         return self.progressLock.withLock {
             let bundleID = app.bundleIdentifier
@@ -784,7 +784,7 @@ extension AppManager: PipelineProgress, PipelineExecutionContext, PipelineErrorL
         }
     }
     
-    func progress(for operation: AppOperation) -> Progress?
+    func progress(for operation: AppOperation) -> Progressss?
     {
         // Access outside critical section to avoid deadlock due to `bundleIdentifier` potentially calling performAndWait() on main thread.
         let bundleID = operation.bundleIdentifier
@@ -800,7 +800,7 @@ extension AppManager: PipelineProgress, PipelineExecutionContext, PipelineErrorL
         }
     }
     
-    func set(_ progress: Progress?, for operation: AppOperation)
+    func set(_ progress: Progressss?, for operation: AppOperation)
     {
         // Access outside critical section to avoid deadlock due to `bundleIdentifier` potentially calling performAndWait() on main thread.
         let bundleID = operation.bundleIdentifier

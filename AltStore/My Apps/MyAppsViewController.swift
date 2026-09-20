@@ -53,7 +53,7 @@ class MyAppsViewController: UICollectionViewController
     private var expandedAppUpdates = Set<String>()
     private var isRefreshingAllApps = false
     private var refreshGroup: RefreshGroup?
-    private var sideloadingProgress: Progress?
+    private var sideloadingProgress: Progressss?
     private var dropDestinationIndexPath: IndexPath?
     private var isCheckingForUpdates = false
     private var didChangeActiveApps = false
@@ -63,6 +63,8 @@ class MyAppsViewController: UICollectionViewController
     private var _imagePickerInstalledApp: InstalledApp?
     private var _viewDidAppear = false
     private var pendingImportURL: URL?
+    
+    private var sideloadingProgressObservation: Any?
     
     private var minimuxerStatusCheckTask: Task<Void, Never>?
     
@@ -1017,7 +1019,13 @@ private extension MyAppsViewController
         self.sideloadingProgress = group.progress
         self.sideloadingProgressView.progress = 0
         self.sideloadingProgressView.isHidden = false
-        self.sideloadingProgressView.observedProgress = group.progress
+        // self.sideloadingProgressView.observedProgress = group.progress
+        
+        self.sideloadingProgressObservation = group.progress.observe(\.fractionCompleted, options: [.new]) { [weak self] progress, _ in
+            DispatchQueue.main.async {
+                self?.sideloadingProgressView.setProgress(Float(progress.fractionCompleted), animated: true)
+            }
+        }
     }
     
     @IBAction func activateApp(_ sender: UIButton)

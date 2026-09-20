@@ -8,20 +8,21 @@
 
 @preconcurrency import UIKit
 
-protocol AsyncOperation<T>: AnyObject, ProgressReporting, OperationLogging {
+protocol AsyncOperation<T>: AnyObject, OperationLogging {
     associatedtype T
     
     var isCancelled: Bool { get }
 
     @discardableResult
-    func execute(parentProgress: Progress?) async throws -> T
+    func execute(parentProgress: Progressss?) async throws -> T
     func cancel()
 }
 
 class BaseOperation<Context: OperationContext, Result>: NSObject, AsyncOperation, @unchecked Sendable{
+    
     typealias T = Result
 
-    private(set) var progress: Progress!
+    private(set) var progress: Progressss!
     private(set) var context: Context!
     
     private(set) var isCancelled = false
@@ -36,7 +37,7 @@ class BaseOperation<Context: OperationContext, Result>: NSObject, AsyncOperation
         }
         super.init()        
         self.context = context
-        self.progress = Progress.discreteProgress(totalUnitCount: self.totalUnitCount)
+        self.progress = Progressss.discreteProgress(totalUnitCount: self.totalUnitCount)
         self.progress.cancellationHandler = { [weak self] in self?.cancel() }
     }
     
@@ -50,7 +51,7 @@ class BaseOperation<Context: OperationContext, Result>: NSObject, AsyncOperation
         throw AbstractClassError.abstractMethodInvoked
     }
     
-    func executePreconditionCheck(parentProgress: Progress?) async throws {
+    func executePreconditionCheck(parentProgress: Progressss?) async throws {
         let className = String(describing: type(of: self))
         debugLog("[\(className)] executePreconditionCheck() started")
         defer { debugLog("[\(className)] executePreconditionCheck() completed") }
@@ -74,7 +75,7 @@ class BaseOperation<Context: OperationContext, Result>: NSObject, AsyncOperation
     }
     
     @discardableResult
-    func execute(parentProgress: Progress?) async throws -> Result
+    func execute(parentProgress: Progressss?) async throws -> Result
     {
         throw AbstractClassError.abstractMethodInvoked
     }

@@ -27,7 +27,7 @@ final class EnableJITOperation: BaseStandaloneOperation<StandaloneOperationConte
         try super.init(context: context)
     }
 
-    override func execute(parentProgress: Progress?) async throws -> Bool {
+    override func execute(parentProgress: Progressss?) async throws -> Bool {
         let startTime = CFAbsoluteTimeGetCurrent()
         debugLog("[EnableJITOperation] execute() started")
         defer {

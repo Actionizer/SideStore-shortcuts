@@ -12,7 +12,7 @@ import SideSign
 
 final class StageAppOperation: BasePipelineOperation<InstallAppOperationContext, ALTApplication>, @unchecked Sendable {
     
-    override func execute(parentProgress: Progress?) async throws -> ALTApplication {
+    override func execute(parentProgress: Progressss?) async throws -> ALTApplication {
         let startTime = CFAbsoluteTimeGetCurrent()
         debugLog("[StageAppOperation] execute() started")
         defer {

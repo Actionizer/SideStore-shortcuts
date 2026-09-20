@@ -325,7 +325,7 @@ private extension NewsViewController
         }
     }
     
-    func install(_ storeApp: StoreApp, at indexPath: IndexPath, progressUpdateHandler: @escaping (Progress) -> Void)
+    func install(_ storeApp: StoreApp, at indexPath: IndexPath, progressUpdateHandler: @escaping (Progressss) -> Void)
     {
         InstallAppDialog.present(storeApp: storeApp, from: self) { [weak self] in
             guard let self else { return }

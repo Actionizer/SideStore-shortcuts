@@ -41,10 +41,21 @@ class PillButton: UIButton
         set { super.accessibilityValue = newValue }
     }
     
-    var progress: Progress? {
+    private var progressObservation: NSKeyValueObservation?
+    
+    var progress: Progressss? {
         didSet {
+            self.progressObservation = nil // tear down old observer
+
             self.progressView.progress = Float(self.progress?.fractionCompleted ?? 0)
-            self.progressView.observedProgress = self.progress
+
+            if let progress = self.progress {
+                self.progressObservation = progress.observe(\.fractionCompleted, options: [.new]) { [weak self] progress, _ in
+                    DispatchQueue.main.async {
+                        self?.progressView.setProgress(Float(progress.fractionCompleted), animated: true)
+                    }
+                }
+            }
             
             let isUserInteractionEnabled = self.isUserInteractionEnabled
             self.isIndicatingActivity = (self.progress != nil)
